@@ -542,37 +542,166 @@
             color: var(--white-50);
         }
 
-        /* SKILLS GRID */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+        /* SKILLS LIST */
+        .skills-search {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            color: var(--white);
+            background: var(--navy-input);
+            border: 1px solid var(--white-20);
+            border-radius: var(--radius-sm);
+            outline: none;
+            transition: border-color .15s, box-shadow .15s;
+            margin-bottom: 10px;
         }
 
-        .skill-chip {
-            padding: 7px 14px;
-            font-size: 12px;
-            font-weight: 600;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: .3px;
+        .skills-search:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px var(--blue-glow);
+        }
+
+        .skills-search::placeholder {
+            color: var(--white-20);
+            font-weight: 400;
+        }
+
+        .skills-list {
+            max-height: 220px;
+            overflow-y: auto;
             border: 1px solid var(--white-20);
-            border-radius: 999px;
+            border-radius: var(--radius-sm);
             background: var(--navy-input);
-            color: var(--white-50);
+            margin-bottom: 10px;
+        }
+
+        .skills-list::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .skills-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .skills-list::-webkit-scrollbar-thumb {
+            background: var(--blue-line);
+            border-radius: 99px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 14px;
             cursor: pointer;
-            transition: all .15s;
+            border-bottom: 1px solid var(--white-10);
+            transition: background .12s;
             user-select: none;
         }
 
-        .skill-chip:hover {
-            border-color: var(--blue);
-            color: var(--blue-bright);
+        .skill-item:last-child {
+            border-bottom: none;
         }
 
-        .skill-chip.selected {
+        .skill-item:hover {
+            background: rgba(42, 109, 217, 0.10);
+        }
+
+        .skill-item.selected {
+            background: rgba(42, 109, 217, 0.15);
+        }
+
+        .skill-item input[type="checkbox"] {
+            width: 15px;
+            height: 15px;
+            accent-color: var(--blue);
+            flex-shrink: 0;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+            background: none;
+        }
+
+        .skill-item span {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--white-80);
+        }
+
+        .skill-item.selected span {
+            color: var(--white);
+        }
+
+        .skill-item.hidden {
+            display: none;
+        }
+
+        .skills-selected-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+            min-height: 0;
+        }
+
+        .skill-tag {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 600;
             background: var(--blue);
             color: #fff;
-            border-color: var(--blue);
+            border-radius: 999px;
+        }
+
+        .skill-tag button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgba(255, 255, 255, .7);
+            font-size: 14px;
+            line-height: 1;
+            padding: 0;
+            margin: 0;
+            transition: .15s;
+        }
+
+        .skill-tag button:hover {
+            color: #fff;
+        }
+
+        .skill-custom-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .skill-custom-row input {
+            flex: 1;
+        }
+
+        .skill-custom-row button {
+            padding: 10px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: .5px;
+            color: #fff;
+            background: var(--blue);
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background .15s;
+            flex-shrink: 0;
+        }
+
+        .skill-custom-row button:hover {
+            background: var(--blue-dark, #1a4fa0);
         }
 
         /* EXPERIENCE BLOCK */
@@ -1565,28 +1694,48 @@
                         Habilidades
                     </div>
 
+                    <!-- HARD SKILLS -->
                     <div class="field">
-                        <label>Hard Skills (técnicas) <span class="req">*</span></label>
-                        <div class="field-hint" style="margin-bottom:10px;">Selecione todas que se aplicam</div>
-                        <div class="skills-grid" id="hard-skills-grid"></div>
+                        <label>Hard Skills — Técnicas <span class="req">*</span></label>
+                        <div class="field-hint" style="margin-bottom:10px;">Pesquise e selecione. Não encontrou?
+                            Adicione manualmente abaixo.</div>
+                        <div class="skills-selected-tags" id="hard-tags"></div>
+                        <input class="skills-search" type="text" placeholder="Pesquisar habilidade técnica..."
+                            oninput="filterSkills('hard', this.value)" />
+                        <div class="skills-list" id="hard-skills-list"></div>
+                        <div class="skill-custom-row">
+                            <input type="text" id="hard-custom-input"
+                                placeholder="Digitar habilidade personalizada..." />
+                            <button type="button" onclick="addCustomSkill('hard')">+ Adicionar</button>
+                        </div>
                         <div class="err" id="err-hard-skills" style="margin-top:10px;"><svg viewBox="0 0 24 24">
                                 <circle cx="12" cy="12" r="10" />
                                 <line x1="12" y1="8" x2="12" y2="12" />
                                 <line x1="12" y1="16" x2="12.01" y2="16" />
-                            </svg>Selecione ao menos uma habilidade técnica.</div>
+                            </svg>Selecione ou adicione ao menos uma habilidade técnica.</div>
                     </div>
 
                     <div class="divider"></div>
 
+                    <!-- SOFT SKILLS -->
                     <div class="field">
-                        <label>Soft Skills (comportamentais) <span class="req">*</span></label>
-                        <div class="field-hint" style="margin-bottom:10px;">Selecione todas que se aplicam</div>
-                        <div class="skills-grid" id="soft-skills-grid"></div>
+                        <label>Soft Skills — Comportamentais <span class="req">*</span></label>
+                        <div class="field-hint" style="margin-bottom:10px;">Pesquise e selecione. Não encontrou?
+                            Adicione manualmente abaixo.</div>
+                        <div class="skills-selected-tags" id="soft-tags"></div>
+                        <input class="skills-search" type="text" placeholder="Pesquisar soft skill..."
+                            oninput="filterSkills('soft', this.value)" />
+                        <div class="skills-list" id="soft-skills-list"></div>
+                        <div class="skill-custom-row">
+                            <input type="text" id="soft-custom-input"
+                                placeholder="Digitar soft skill personalizada..." />
+                            <button type="button" onclick="addCustomSkill('soft')">+ Adicionar</button>
+                        </div>
                         <div class="err" id="err-soft-skills" style="margin-top:10px;"><svg viewBox="0 0 24 24">
                                 <circle cx="12" cy="12" r="10" />
                                 <line x1="12" y1="8" x2="12" y2="12" />
                                 <line x1="12" y1="16" x2="12.01" y2="16" />
-                            </svg>Selecione ao menos uma soft skill.</div>
+                            </svg>Selecione ou adicione ao menos uma soft skill.</div>
                     </div>
                 </div>
 
@@ -1690,13 +1839,13 @@
                         <div class="check-icon"><svg viewBox="0 0 24 24">
                                 <polyline points="20 6 9 17 4 12" />
                             </svg></div>
-                        Dados salvos na planilha Google Sheets
+                        Dados enviados para eliedsoalves@gmail.com
                     </div>
                     <div class="check-item">
                         <div class="check-icon"><svg viewBox="0 0 24 24">
                                 <polyline points="20 6 9 17 4 12" />
                             </svg></div>
-                        Notificação enviada para eliedsoalves@gmail.com
+                        Nossa equipe entrará em contato em breve
                     </div>
                 </div>
                 <button class="btn-reset" onclick="resetForm()" type="button">+ Nova Solicitação</button>
@@ -1708,7 +1857,7 @@
     </div>
 
     <script>
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz1vlc3qLwSq8n0GC89MWOwV4hfrT_0SoJMv6fJkWZM-Q5saCahqKpAhW8u-lGGj_m_/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxwL6VY9sDd0-cHZ3Asw3P9L53muA8rAZzZPc7EDoY3x61bnoIFPE8HMKSqt71fks4WQw/exec';
 
         /* ─── STATE ─── */
         let temCV = null, temFoto = null, temExp = null;
@@ -1745,23 +1894,83 @@
             'Gestão de conflitos', 'Visão sistêmica'
         ];
 
-        /* ─── BUILD SKILL GRIDS ─── */
-        function buildSkillGrid(skills, containerId, set, errId) {
-            const grid = document.getElementById(containerId);
+        /* ─── BUILD SKILL LISTS ─── */
+        function buildSkillList(skills, listId, type) {
+            const list = document.getElementById(listId);
             skills.forEach(skill => {
-                const chip = document.createElement('div');
-                chip.className = 'skill-chip';
-                chip.textContent = skill;
-                chip.onclick = () => {
-                    if (set.has(skill)) { set.delete(skill); chip.classList.remove('selected'); }
-                    else { set.add(skill); chip.classList.add('selected'); }
-                    showErr(errId, false);
+                const item = document.createElement('div');
+                item.className = 'skill-item';
+                item.dataset.skill = skill.toLowerCase();
+                item.innerHTML = `<input type="checkbox" /><span>${skill}</span>`;
+                item.onclick = (e) => {
+                    const cb = item.querySelector('input[type="checkbox"]');
+                    if (e.target !== cb) cb.checked = !cb.checked;
+                    if (cb.checked) {
+                        if (type === 'hard') { selectedHard.add(skill); } else { selectedSoft.add(skill); }
+                        item.classList.add('selected');
+                    } else {
+                        if (type === 'hard') { selectedHard.delete(skill); } else { selectedSoft.delete(skill); }
+                        item.classList.remove('selected');
+                    }
+                    renderTags(type);
+                    showErr(type === 'hard' ? 'err-hard-skills' : 'err-soft-skills', false);
                 };
-                grid.appendChild(chip);
+                list.appendChild(item);
             });
         }
-        buildSkillGrid(hardSkills, 'hard-skills-grid', selectedHard, 'err-hard-skills');
-        buildSkillGrid(softSkills, 'soft-skills-grid', selectedSoft, 'err-soft-skills');
+
+        function filterSkills(type, query) {
+            const listId = type === 'hard' ? 'hard-skills-list' : 'soft-skills-list';
+            const items = document.querySelectorAll('#' + listId + ' .skill-item');
+            const q = query.toLowerCase().trim();
+            items.forEach(item => {
+                item.classList.toggle('hidden', q && !item.dataset.skill.includes(q));
+            });
+        }
+
+        function renderTags(type) {
+            const set = type === 'hard' ? selectedHard : selectedSoft;
+            const tagsEl = document.getElementById(type + '-tags');
+            tagsEl.innerHTML = '';
+            set.forEach(skill => {
+                const tag = document.createElement('div');
+                tag.className = 'skill-tag';
+                tag.innerHTML = `<span>${skill}</span><button type="button" onclick="removeSkill('${type}','${skill}')" title="Remover">&times;</button>`;
+                tagsEl.appendChild(tag);
+            });
+        }
+
+        function removeSkill(type, skill) {
+            const set = type === 'hard' ? selectedHard : selectedSoft;
+            set.delete(skill);
+            // uncheck in list
+            const listId = type === 'hard' ? 'hard-skills-list' : 'soft-skills-list';
+            document.querySelectorAll('#' + listId + ' .skill-item').forEach(item => {
+                if (item.querySelector('span').textContent === skill) {
+                    item.querySelector('input[type="checkbox"]').checked = false;
+                    item.classList.remove('selected');
+                }
+            });
+            renderTags(type);
+        }
+
+        function addCustomSkill(type) {
+            const inputId = type + '-custom-input';
+            const input = document.getElementById(inputId);
+            const val = input.value.trim();
+            if (!val) return;
+            const set = type === 'hard' ? selectedHard : selectedSoft;
+            set.add(val);
+            renderTags(type);
+            input.value = '';
+            showErr(type === 'hard' ? 'err-hard-skills' : 'err-soft-skills', false);
+        }
+
+        document.getElementById('hard-custom-input').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addCustomSkill('hard'); } });
+        document.getElementById('soft-custom-input').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addCustomSkill('soft'); } });
+
+        buildSkillList(hardSkills, 'hard-skills-list', 'hard');
+        buildSkillList(softSkills, 'soft-skills-list', 'soft');
 
         /* ─── MASK PHONE ─── */
         function maskPhone(el) {
@@ -2066,7 +2275,8 @@
             temCV = null; temFoto = null; temExp = null;
             expCount = 0; cursoCount = 0; langCount = 0;
             selectedHard.clear(); selectedSoft.clear();
-            document.querySelectorAll('.skill-chip').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.skill-item').forEach(i => { i.classList.remove('selected'); i.querySelector('input[type="checkbox"]').checked = false; });
+            document.querySelectorAll('.skills-selected-tags').forEach(t => t.innerHTML = '');
             document.querySelectorAll('.yn-btn').forEach(b => b.classList.remove('active-yes', 'active-no'));
             document.querySelectorAll('.collapsible').forEach(c => c.classList.remove('show'));
             document.getElementById('exp-blocks').innerHTML = '';
