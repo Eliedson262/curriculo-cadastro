@@ -1553,7 +1553,7 @@
                                 <input type="file" id="foto-file" accept="image/jpeg,image/png"
                                     onchange="handleFotoFile(this)">
                                 <img id="photo-preview" class="photo-preview" src="" alt="Foto" />
-                                <div class="photo-placeholder" id="photo-placeholder">🧑</div>
+                                <div class="photo-placeholder" id="photo-placeholder"></div>
                                 <div class="photo-drop-title">Clique para enviar<br>JPG ou PNG · Máx 3MB</div>
                             </div>
                         </div>
@@ -1824,9 +1824,9 @@
                         <polyline points="22 4 12 14.01 9 11.01" />
                     </svg>
                 </div>
-                <h2>Currículo Enviado!</h2>
-                <p>Seus dados foram recebidos com sucesso.<br>Nossa equipe irá processar e entrar em contato em breve.
-                </p>
+                <h2>Solicitação Recebida!</h2>
+                <p>Seus dados foram registrados com sucesso.<br>Nossa equipe irá analisar as informações e entrar em
+                    contato em breve para dar andamento ao seu currículo.</p>
                 <div class="protocol-badge">
                     <svg viewBox="0 0 24 24">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -1839,13 +1839,19 @@
                         <div class="check-icon"><svg viewBox="0 0 24 24">
                                 <polyline points="20 6 9 17 4 12" />
                             </svg></div>
-                        Dados enviados para eliedsoalves@gmail.com
+                        Solicitação registrada com sucesso
                     </div>
                     <div class="check-item">
                         <div class="check-icon"><svg viewBox="0 0 24 24">
                                 <polyline points="20 6 9 17 4 12" />
                             </svg></div>
-                        Nossa equipe entrará em contato em breve
+                        Guarde seu número de protocolo para acompanhamento
+                    </div>
+                    <div class="check-item">
+                        <div class="check-icon"><svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg></div>
+                        Em breve nossa equipe entrará em contato
                     </div>
                 </div>
                 <button class="btn-reset" onclick="resetForm()" type="button">+ Nova Solicitação</button>
