@@ -34,7 +34,6 @@
             --white-10: rgba(255, 255, 255, 0.07);
             --red: #E05252;
             --green: #22C987;
-            --yellow: #F59E0B;
             --radius-sm: 6px;
             --radius-md: 10px;
             --radius-lg: 16px;
@@ -49,7 +48,7 @@
             padding: 0 0 5rem;
         }
 
-        /* ── HERO ── */
+        /* HERO */
         .hero {
             background: linear-gradient(160deg, #0D1B2E 0%, #112240 60%, #0a1628 100%);
             border-bottom: 1px solid var(--white-20);
@@ -173,14 +172,13 @@
             max-width: 480px;
         }
 
-        /* ── BODY ── */
+        /* BODY */
         .body-wrap {
             max-width: 680px;
             margin: 0 auto;
             padding: 1.75rem 1.25rem 0;
         }
 
-        /* INFO BOX */
         .info-box {
             display: flex;
             gap: 12px;
@@ -210,7 +208,6 @@
             font-weight: 400;
         }
 
-        /* CARD */
         .card {
             background: var(--navy-card);
             border: 1px solid var(--white-20);
@@ -337,18 +334,8 @@
             gap: 14px;
         }
 
-        .row-3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 14px;
-        }
-
         @media(max-width:560px) {
             .row {
-                grid-template-columns: 1fr;
-            }
-
-            .row-3 {
                 grid-template-columns: 1fr;
             }
         }
@@ -381,7 +368,13 @@
             stroke-linejoin: round;
         }
 
-        /* ── YES/NO TOGGLE ── */
+        .divider {
+            height: 1px;
+            background: var(--white-20);
+            margin: 1.25rem 0;
+        }
+
+        /* YES/NO */
         .yn-wrap {
             display: flex;
             gap: 10px;
@@ -437,7 +430,7 @@
             color: var(--blue-bright);
         }
 
-        /* COLLAPSIBLE SECTIONS */
+        /* COLLAPSIBLE */
         .collapsible {
             display: none;
         }
@@ -471,11 +464,6 @@
             display: none;
         }
 
-        .file-drop-icon {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
         .file-drop-title {
             font-size: 13px;
             font-weight: 600;
@@ -488,14 +476,20 @@
             color: var(--white-50);
         }
 
+        .file-drop-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
         .file-name {
             font-size: 12px;
             color: var(--green);
             font-weight: 600;
             margin-top: 8px;
+            word-break: break-all;
         }
 
-        /* PHOTO UPLOAD */
+        /* PHOTO */
         .photo-drop {
             border: 2px dashed var(--blue-line);
             border-radius: var(--radius-md);
@@ -531,18 +525,13 @@
             border: 2px solid var(--blue);
         }
 
-        .photo-placeholder {
-            font-size: 36px;
-            margin-bottom: 8px;
-        }
-
         .photo-drop-title {
             font-size: 11px;
             font-weight: 600;
             color: var(--white-50);
         }
 
-        /* SKILLS LIST */
+        /* SKILLS */
         .skills-search {
             width: 100%;
             padding: 10px 14px;
@@ -581,10 +570,6 @@
             width: 5px;
         }
 
-        .skills-list::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
         .skills-list::-webkit-scrollbar-thumb {
             background: var(--blue-line);
             border-radius: 99px;
@@ -619,9 +604,6 @@
             accent-color: var(--blue);
             flex-shrink: 0;
             cursor: pointer;
-            border: none;
-            padding: 0;
-            background: none;
         }
 
         .skill-item span {
@@ -643,7 +625,6 @@
             flex-wrap: wrap;
             gap: 6px;
             margin-bottom: 8px;
-            min-height: 0;
         }
 
         .skill-tag {
@@ -666,7 +647,6 @@
             font-size: 14px;
             line-height: 1;
             padding: 0;
-            margin: 0;
             transition: .15s;
         }
 
@@ -689,7 +669,6 @@
             font-size: 12px;
             font-weight: 700;
             font-family: 'Montserrat', sans-serif;
-            letter-spacing: .5px;
             color: #fff;
             background: var(--blue);
             border: none;
@@ -701,17 +680,16 @@
         }
 
         .skill-custom-row button:hover {
-            background: var(--blue-dark, #1a4fa0);
+            background: #1a4fa0;
         }
 
-        /* EXPERIENCE BLOCK */
+        /* EXP / CURSOS */
         .exp-block {
             background: var(--navy-input);
             border: 1px solid var(--white-20);
             border-radius: var(--radius-md);
             padding: 1.25rem;
             margin-bottom: 1rem;
-            position: relative;
         }
 
         .exp-block-title {
@@ -734,7 +712,6 @@
             font-size: 12px;
             font-weight: 600;
             font-family: 'Montserrat', sans-serif;
-            letter-spacing: .5px;
             display: flex;
             align-items: center;
             gap: 4px;
@@ -792,7 +769,6 @@
             stroke-linejoin: round;
         }
 
-        /* RESPONSIBILITIES */
         .resp-list {
             display: flex;
             flex-direction: column;
@@ -842,7 +818,6 @@
             font-size: 12px;
             font-weight: 600;
             font-family: 'Montserrat', sans-serif;
-            letter-spacing: .3px;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -862,6 +837,31 @@
             stroke-width: 2.5;
             stroke-linecap: round;
             stroke-linejoin: round;
+        }
+
+        .check-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .check-row input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--blue);
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .check-row label {
+            font-size: 12px;
+            text-transform: none;
+            letter-spacing: 0;
+            color: var(--white-80);
+            cursor: pointer;
+            margin-bottom: 0;
+            font-weight: 500;
         }
 
         /* IDIOMAS */
@@ -920,7 +920,7 @@
             justify-content: center;
             gap: 10px;
             transition: all .2s;
-            box-shadow: 0 6px 24px rgba(42, 109, 217, 0.45);
+            box-shadow: 0 6px 24px rgba(255, 255, 255, 0.45);
             position: relative;
             overflow: hidden;
         }
@@ -949,6 +949,12 @@
             color: var(--white-50);
         }
 
+        .btn-submit svg,
+        .btn-submit span {
+            position: relative;
+            z-index: 1;
+        }
+
         .btn-submit svg {
             width: 18px;
             height: 18px;
@@ -957,13 +963,6 @@
             stroke-width: 2.5;
             stroke-linecap: round;
             stroke-linejoin: round;
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-submit span {
-            position: relative;
-            z-index: 1;
         }
 
         .security-note {
@@ -976,7 +975,6 @@
             justify-content: center;
             gap: 6px;
             font-weight: 500;
-            letter-spacing: .3px;
         }
 
         .security-note svg {
@@ -1172,10 +1170,9 @@
         .footer {
             max-width: 680px;
             margin: 2.5rem auto 0;
-            padding: 0 1.25rem 0;
+            padding: 1.5rem 1.25rem 0;
             text-align: center;
             border-top: 1px solid var(--white-10);
-            padding-top: 1.5rem;
         }
 
         .footer p {
@@ -1187,96 +1184,6 @@
 
         .footer span {
             color: var(--blue-bright);
-        }
-
-        /* DIVIDER */
-        .divider {
-            height: 1px;
-            background: var(--white-20);
-            margin: 1.25rem 0;
-        }
-
-        /* CHECKBOX CURRENT JOB */
-        .check-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 8px;
-        }
-
-        .check-row input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            accent-color: var(--blue);
-            flex-shrink: 0;
-            cursor: pointer;
-        }
-
-        .check-row label {
-            font-size: 12px;
-            text-transform: none;
-            letter-spacing: 0;
-            color: var(--white-80);
-            cursor: pointer;
-            margin-bottom: 0;
-            font-weight: 500;
-        }
-
-        /* STEP INDICATOR */
-        .step-bar {
-            display: flex;
-            align-items: center;
-            gap: 0;
-            margin-bottom: 1.75rem;
-            overflow-x: auto;
-            padding-bottom: 4px;
-        }
-
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 0;
-            flex-shrink: 0;
-        }
-
-        .step-dot {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: var(--navy-input);
-            border: 1px solid var(--white-20);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--white-50);
-            flex-shrink: 0;
-            transition: .2s;
-        }
-
-        .step-dot.active {
-            background: var(--blue);
-            border-color: var(--blue);
-            color: #fff;
-            box-shadow: 0 0 0 3px var(--blue-glow);
-        }
-
-        .step-dot.done {
-            background: var(--green);
-            border-color: var(--green);
-            color: #fff;
-        }
-
-        .step-line {
-            width: 24px;
-            height: 1px;
-            background: var(--white-20);
-            flex-shrink: 0;
-        }
-
-        .step-line.done {
-            background: var(--green);
         }
     </style>
 </head>
@@ -1326,7 +1233,7 @@
                     seus sonhos!</p>
             </div>
 
-            <!-- STEP 0 — JÁ POSSUI CURRÍCULO? -->
+            <!-- POSSUI CURRÍCULO? -->
             <div class="card">
                 <div class="section-label">
                     <svg viewBox="0 0 24 24">
@@ -1353,7 +1260,7 @@
                 </div>
             </div>
 
-            <!-- SE JÁ TEM CURRÍCULO -->
+            <!-- JÁ TEM CURRÍCULO -->
             <div class="collapsible" id="section-upload-cv">
                 <div class="card">
                     <div class="section-label">
@@ -1388,7 +1295,6 @@
                         </svg>
                         Selecione um arquivo para continuar.
                     </div>
-
                     <div class="divider"></div>
                     <div class="field">
                         <label for="cv-nome">Seu nome completo <span class="req">*</span></label>
@@ -1426,7 +1332,7 @@
                 </div>
             </div>
 
-            <!-- SE NÃO TEM CURRÍCULO — FORMULÁRIO COMPLETO -->
+            <!-- CRIAR CURRÍCULO -->
             <div class="collapsible" id="section-criar-cv">
 
                 <!-- DADOS PESSOAIS -->
@@ -1438,7 +1344,6 @@
                         </svg>
                         Dados Pessoais
                     </div>
-
                     <div class="field">
                         <label for="nome">Nome completo <span class="req">*</span></label>
                         <input type="text" id="nome" placeholder="Ex: João da Silva Souza" autocomplete="name" />
@@ -1448,7 +1353,6 @@
                                 <line x1="12" y1="16" x2="12.01" y2="16" />
                             </svg>Informe o nome completo.</div>
                     </div>
-
                     <div class="row">
                         <div class="field">
                             <label for="idade">Idade</label>
@@ -1461,7 +1365,6 @@
                             <div class="field-hint">Opcional</div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="field">
                             <label for="cidade">Cidade <span class="req">*</span></label>
@@ -1511,7 +1414,6 @@
                                 </svg>Selecione o estado.</div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="field">
                             <label for="telefone">Telefone <span class="req">*</span></label>
@@ -1533,13 +1435,11 @@
                                 </svg>E-mail inválido.</div>
                         </div>
                     </div>
-
                     <div class="field">
                         <label for="linkedin">LinkedIn</label>
                         <input type="text" id="linkedin" placeholder="linkedin.com/in/seu-perfil" />
                         <div class="field-hint">Opcional</div>
                     </div>
-
                     <!-- FOTO -->
                     <div class="field">
                         <div class="yn-label" style="margin-bottom:10px;">Deseja incluir foto 3x4?</div>
@@ -1553,7 +1453,7 @@
                                 <input type="file" id="foto-file" accept="image/jpeg,image/png"
                                     onchange="handleFotoFile(this)">
                                 <img id="photo-preview" class="photo-preview" src="" alt="Foto" />
-                                <div class="photo-placeholder" id="photo-placeholder"></div>
+                                <div id="photo-placeholder" style="font-size:36px;margin-bottom:8px;">👤</div>
                                 <div class="photo-drop-title">Clique para enviar<br>JPG ou PNG · Máx 3MB</div>
                             </div>
                         </div>
@@ -1573,7 +1473,7 @@
                     <div class="field">
                         <label for="objetivo">Objetivo e resumo <span class="req">*</span></label>
                         <textarea id="objetivo"
-                            placeholder="Ex: Profissional com 5 anos de experiência em vendas, buscando oportunidade como Gerente Comercial. Focado em resultados, com histórico de aumento de 30% nas vendas da equipe anterior..."
+                            placeholder="Ex: Profissional com 5 anos de experiência em vendas, buscando oportunidade como Gerente Comercial..."
                             style="min-height:120px;"></textarea>
                         <div class="field-hint">Descreva seu objetivo profissional e um breve resumo das suas
                             qualificações (3–5 linhas).</div>
@@ -1585,7 +1485,7 @@
                     </div>
                 </div>
 
-                <!-- EXPERIÊNCIA PROFISSIONAL -->
+                <!-- EXPERIÊNCIA -->
                 <div class="card">
                     <div class="section-label">
                         <svg viewBox="0 0 24 24">
@@ -1596,17 +1496,16 @@
                     </div>
                     <div class="yn-label">Possui experiência profissional? <span class="req">*</span></div>
                     <div class="yn-wrap">
-                        <button class="yn-btn" id="btn-exp-sim" onclick="setExp(true)" type="button">✅ Sim</button>
+                        <button class="yn-btn" id="btn-exp-sim" onclick="setExp(true)" type="button">Sim</button>
                         <button class="yn-btn" id="btn-exp-nao" onclick="setExp(false)" type="button">Não — primeiro
                             emprego</button>
                     </div>
-                    <div class="err" id="err-exp-yn" style="margin-top:-8px; margin-bottom:10px;"><svg
+                    <div class="err" id="err-exp-yn" style="margin-top:-8px;margin-bottom:10px;"><svg
                             viewBox="0 0 24 24">
                             <circle cx="12" cy="12" r="10" />
                             <line x1="12" y1="8" x2="12" y2="12" />
                             <line x1="12" y1="16" x2="12.01" y2="16" />
                         </svg>Selecione uma opção.</div>
-
                     <div class="collapsible" id="section-exp">
                         <div id="exp-blocks"></div>
                         <button class="btn-add" onclick="addExp()" type="button">
@@ -1619,7 +1518,7 @@
                     </div>
                 </div>
 
-                <!-- FORMAÇÃO ACADÊMICA -->
+                <!-- FORMAÇÃO -->
                 <div class="card">
                     <div class="section-label">
                         <svg viewBox="0 0 24 24">
@@ -1663,10 +1562,7 @@
                             <input type="text" id="ano-conclusao" placeholder="Ex: 2022 ou Em andamento" />
                         </div>
                     </div>
-
                     <div class="divider"></div>
-
-                    <!-- CURSOS -->
                     <div class="section-label" style="margin-top:.5rem;">
                         <svg viewBox="0 0 24 24">
                             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
@@ -1693,8 +1589,6 @@
                         </svg>
                         Habilidades
                     </div>
-
-                    <!-- HARD SKILLS -->
                     <div class="field">
                         <label>Hard Skills — Técnicas <span class="req">*</span></label>
                         <div class="field-hint" style="margin-bottom:10px;">Pesquise e selecione. Não encontrou?
@@ -1714,10 +1608,7 @@
                                 <line x1="12" y1="16" x2="12.01" y2="16" />
                             </svg>Selecione ou adicione ao menos uma habilidade técnica.</div>
                     </div>
-
                     <div class="divider"></div>
-
-                    <!-- SOFT SKILLS -->
                     <div class="field">
                         <label>Soft Skills — Comportamentais <span class="req">*</span></label>
                         <div class="field-hint" style="margin-bottom:10px;">Pesquise e selecione. Não encontrou?
@@ -1749,8 +1640,6 @@
                         </svg>
                         Informações Adicionais
                     </div>
-
-                    <!-- IDIOMAS -->
                     <div class="field">
                         <label>Idiomas</label>
                         <div class="field-hint" style="margin-bottom:10px;">Opcional</div>
@@ -1763,30 +1652,23 @@
                             Adicionar idioma
                         </button>
                     </div>
-
                     <div class="divider"></div>
-
-                    <!-- CERTIFICAÇÕES -->
                     <div class="field">
                         <label for="certificacoes">Certificações</label>
                         <textarea id="certificacoes"
-                            placeholder="Ex: Certificação AWS Cloud Practitioner (2023), Google Analytics Individual Qualification (2022)..."></textarea>
-                        <div class="field-hint">Opcional — liste suas certificações relevantes</div>
+                            placeholder="Ex: Certificação AWS Cloud Practitioner (2023)..."></textarea>
+                        <div class="field-hint">Opcional</div>
                     </div>
-
                     <div class="divider"></div>
-
-                    <!-- PROJETOS -->
                     <div class="field">
                         <label for="projetos">Projetos de destaque</label>
                         <textarea id="projetos"
-                            placeholder="Ex: Desenvolvi um sistema de gestão que reduziu o tempo de atendimento em 40%, implementei campanha de marketing que gerou R$ 200k em receita..."></textarea>
-                        <div class="field-hint">Opcional — descreva projetos relevantes com resultados mensuráveis</div>
+                            placeholder="Ex: Desenvolvi um sistema de gestão que reduziu o tempo de atendimento em 40%..."></textarea>
+                        <div class="field-hint">Opcional</div>
                     </div>
                 </div>
 
-            </div>
-            <!-- / section-criar-cv -->
+            </div><!-- /section-criar-cv -->
 
             <!-- SUBMIT -->
             <div id="submit-area" style="display:none;">
@@ -1814,7 +1696,7 @@
         </div>
     </div>
 
-    <!-- SUCCESS PAGE -->
+    <!-- SUCCESS -->
     <div id="successPage">
         <div class="body-wrap" style="padding-top:2rem;">
             <div class="success-card">
@@ -1838,20 +1720,17 @@
                     <div class="check-item">
                         <div class="check-icon"><svg viewBox="0 0 24 24">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg></div>
-                        Solicitação registrada com sucesso
+                            </svg></div>Solicitação registrada com sucesso
                     </div>
                     <div class="check-item">
                         <div class="check-icon"><svg viewBox="0 0 24 24">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg></div>
-                        Guarde seu número de protocolo para acompanhamento
+                            </svg></div>Guarde seu número de protocolo para acompanhamento
                     </div>
                     <div class="check-item">
                         <div class="check-icon"><svg viewBox="0 0 24 24">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg></div>
-                        Em breve nossa equipe entrará em contato
+                            </svg></div>Em breve nossa equipe entrará em contato
                     </div>
                 </div>
                 <button class="btn-reset" onclick="resetForm()" type="button">+ Nova Solicitação</button>
@@ -1865,42 +1744,36 @@
     <script>
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxwL6VY9sDd0-cHZ3Asw3P9L53muA8rAZzZPc7EDoY3x61bnoIFPE8HMKSqt71fks4WQw/exec';
 
-        /* ─── STATE ─── */
+        /* STATE */
         let temCV = null, temFoto = null, temExp = null;
         let expCount = 0, cursoCount = 0, langCount = 0;
+        let fotoBase64 = null, fotoMime = null, fotoNome = null;
+        let cvBase64 = null, cvMime = null, cvNome = null;
         const selectedHard = new Set(), selectedSoft = new Set();
 
-        /* ─── HARD SKILLS ─── */
+        /* SKILLS */
         const hardSkills = [
-            'Excel Avançado', 'Word', 'PowerPoint', 'Google Sheets', 'Google Docs',
-            'Pacote Office', 'SAP', 'ERP', 'CRM', 'Salesforce', 'HubSpot',
-            'Photoshop', 'Illustrator', 'Canva', 'AutoCAD', 'Inventor',
-            'Python', 'JavaScript', 'Java', 'SQL', 'PHP', 'HTML/CSS',
-            'React', 'Node.js', 'Power BI', 'Tableau', 'Google Analytics',
-            'SEO', 'Google Ads', 'Facebook Ads', 'Marketing Digital',
-            'Contabilidade', 'Gestão Financeira', 'Fluxo de Caixa',
-            'Gestão de Projetos', 'Scrum', 'Agile', 'Trello', 'Jira', 'Notion',
-            'NF-e', 'TOTVS', 'Protheus', 'Notas Fiscais', 'Legislação Trabalhista',
-            'Manutenção Elétrica', 'Manutenção Mecânica', 'CNC', 'PLC',
-            'Direção Veicular', 'Empilhadeira', 'NR-35', 'NR-10', 'NR-12',
-            'Enfermagem', 'Cuidados com Idosos', 'Primeiros Socorros',
+            'Excel Avançado', 'Word', 'PowerPoint', 'Google Sheets', 'Google Docs', 'Pacote Office',
+            'SAP', 'ERP', 'CRM', 'Salesforce', 'HubSpot', 'Photoshop', 'Illustrator', 'Canva',
+            'AutoCAD', 'Inventor', 'Python', 'JavaScript', 'Java', 'SQL', 'PHP', 'HTML/CSS',
+            'React', 'Node.js', 'Power BI', 'Tableau', 'Google Analytics', 'SEO', 'Google Ads',
+            'Facebook Ads', 'Marketing Digital', 'Contabilidade', 'Gestão Financeira', 'Fluxo de Caixa',
+            'Gestão de Projetos', 'Scrum', 'Agile', 'Trello', 'Jira', 'Notion', 'NF-e', 'TOTVS',
+            'Protheus', 'Notas Fiscais', 'Legislação Trabalhista', 'Manutenção Elétrica',
+            'Manutenção Mecânica', 'CNC', 'PLC', 'Direção Veicular', 'Empilhadeira',
+            'NR-35', 'NR-10', 'NR-12', 'Enfermagem', 'Cuidados com Idosos', 'Primeiros Socorros',
             'Corte e Costura', 'Design de Moda', 'Atendimento ao Cliente'
         ];
-
-        /* ─── SOFT SKILLS ─── */
         const softSkills = [
-            'Comunicação', 'Trabalho em equipe', 'Liderança', 'Proatividade',
-            'Organização', 'Pontualidade', 'Resiliência', 'Adaptabilidade',
-            'Criatividade', 'Pensamento crítico', 'Resolução de problemas',
-            'Inteligência emocional', 'Empatia', 'Foco em resultados',
-            'Gestão do tempo', 'Tomada de decisão', 'Negociação', 'Persuasão',
-            'Ética profissional', 'Comprometimento', 'Responsabilidade',
-            'Flexibilidade', 'Colaboração', 'Iniciativa', 'Autodidatismo',
-            'Atenção aos detalhes', 'Multitarefas', 'Planejamento estratégico',
+            'Comunicação', 'Trabalho em equipe', 'Liderança', 'Proatividade', 'Organização',
+            'Pontualidade', 'Resiliência', 'Adaptabilidade', 'Criatividade', 'Pensamento crítico',
+            'Resolução de problemas', 'Inteligência emocional', 'Empatia', 'Foco em resultados',
+            'Gestão do tempo', 'Tomada de decisão', 'Negociação', 'Persuasão', 'Ética profissional',
+            'Comprometimento', 'Responsabilidade', 'Flexibilidade', 'Colaboração', 'Iniciativa',
+            'Autodidatismo', 'Atenção aos detalhes', 'Multitarefas', 'Planejamento estratégico',
             'Gestão de conflitos', 'Visão sistêmica'
         ];
 
-        /* ─── BUILD SKILL LISTS ─── */
         function buildSkillList(skills, listId, type) {
             const list = document.getElementById(listId);
             skills.forEach(skill => {
@@ -1911,47 +1784,34 @@
                 item.onclick = (e) => {
                     const cb = item.querySelector('input[type="checkbox"]');
                     if (e.target !== cb) cb.checked = !cb.checked;
-                    if (cb.checked) {
-                        if (type === 'hard') { selectedHard.add(skill); } else { selectedSoft.add(skill); }
-                        item.classList.add('selected');
-                    } else {
-                        if (type === 'hard') { selectedHard.delete(skill); } else { selectedSoft.delete(skill); }
-                        item.classList.remove('selected');
-                    }
+                    if (cb.checked) { (type === 'hard' ? selectedHard : selectedSoft).add(skill); item.classList.add('selected'); }
+                    else { (type === 'hard' ? selectedHard : selectedSoft).delete(skill); item.classList.remove('selected'); }
                     renderTags(type);
                     showErr(type === 'hard' ? 'err-hard-skills' : 'err-soft-skills', false);
                 };
                 list.appendChild(item);
             });
         }
-
         function filterSkills(type, query) {
-            const listId = type === 'hard' ? 'hard-skills-list' : 'soft-skills-list';
-            const items = document.querySelectorAll('#' + listId + ' .skill-item');
             const q = query.toLowerCase().trim();
-            items.forEach(item => {
+            document.querySelectorAll('#' + (type === 'hard' ? 'hard' : 'soft') + '-skills-list .skill-item').forEach(item => {
                 item.classList.toggle('hidden', q && !item.dataset.skill.includes(q));
             });
         }
-
         function renderTags(type) {
             const set = type === 'hard' ? selectedHard : selectedSoft;
-            const tagsEl = document.getElementById(type + '-tags');
-            tagsEl.innerHTML = '';
+            const el = document.getElementById(type + '-tags');
+            el.innerHTML = '';
             set.forEach(skill => {
                 const tag = document.createElement('div');
                 tag.className = 'skill-tag';
-                tag.innerHTML = `<span>${skill}</span><button type="button" onclick="removeSkill('${type}','${skill}')" title="Remover">&times;</button>`;
-                tagsEl.appendChild(tag);
+                tag.innerHTML = `<span>${skill}</span><button type="button" onclick="removeSkill('${type}','${skill.replace(/'/g, "\\'")}'">&times;</button>`;
+                el.appendChild(tag);
             });
         }
-
         function removeSkill(type, skill) {
-            const set = type === 'hard' ? selectedHard : selectedSoft;
-            set.delete(skill);
-            // uncheck in list
-            const listId = type === 'hard' ? 'hard-skills-list' : 'soft-skills-list';
-            document.querySelectorAll('#' + listId + ' .skill-item').forEach(item => {
+            (type === 'hard' ? selectedHard : selectedSoft).delete(skill);
+            document.querySelectorAll('#' + (type === 'hard' ? 'hard' : 'soft') + '-skills-list .skill-item').forEach(item => {
                 if (item.querySelector('span').textContent === skill) {
                     item.querySelector('input[type="checkbox"]').checked = false;
                     item.classList.remove('selected');
@@ -1959,26 +1819,21 @@
             });
             renderTags(type);
         }
-
         function addCustomSkill(type) {
-            const inputId = type + '-custom-input';
-            const input = document.getElementById(inputId);
+            const input = document.getElementById(type + '-custom-input');
             const val = input.value.trim();
             if (!val) return;
-            const set = type === 'hard' ? selectedHard : selectedSoft;
-            set.add(val);
+            (type === 'hard' ? selectedHard : selectedSoft).add(val);
             renderTags(type);
             input.value = '';
             showErr(type === 'hard' ? 'err-hard-skills' : 'err-soft-skills', false);
         }
-
         document.getElementById('hard-custom-input').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addCustomSkill('hard'); } });
         document.getElementById('soft-custom-input').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addCustomSkill('soft'); } });
-
         buildSkillList(hardSkills, 'hard-skills-list', 'hard');
         buildSkillList(softSkills, 'soft-skills-list', 'soft');
 
-        /* ─── MASK PHONE ─── */
+        /* PHONE MASK */
         function maskPhone(el) {
             el.addEventListener('input', function () {
                 let v = this.value.replace(/\D/g, '');
@@ -1992,7 +1847,41 @@
         maskPhone(document.getElementById('telefone'));
         maskPhone(document.getElementById('cv-tel'));
 
-        /* ─── TEM CV ─── */
+        /* FILE READERS — converte para Base64 */
+        function handleFotoFile(input) {
+            const file = input.files[0];
+            if (!file) return;
+            if (file.size > 3 * 1024 * 1024) { showToast('A foto excede 3MB. Escolha uma imagem menor.'); input.value = ''; return; }
+            const reader = new FileReader();
+            reader.onload = e => {
+                fotoBase64 = e.target.result.split(',')[1];
+                fotoMime = file.type;
+                fotoNome = file.name;
+                document.getElementById('photo-preview').src = e.target.result;
+                document.getElementById('photo-preview').style.display = 'block';
+                document.getElementById('photo-placeholder').style.display = 'none';
+                document.getElementById('photo-drop').classList.add('has-file');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function handleCVFile(input) {
+            const file = input.files[0];
+            if (!file) return;
+            if (file.size > 10 * 1024 * 1024) { showToast('O arquivo excede 10MB.'); input.value = ''; return; }
+            const reader = new FileReader();
+            reader.onload = e => {
+                cvBase64 = e.target.result.split(',')[1];
+                cvMime = file.type;
+                cvNome = file.name;
+                document.getElementById('cv-file-name').textContent = file.name;
+                document.getElementById('cv-drop').classList.add('has-file');
+                showErr('err-cv-file', false);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        /* TEM CV */
         function setTemCV(val) {
             temCV = val;
             document.getElementById('btn-tem-cv-sim').className = 'yn-btn' + (val ? ' active-yes' : '');
@@ -2004,29 +1893,16 @@
             document.getElementById('btnText').textContent = val ? 'Enviar Currículo' : 'Enviar Dados para Criação';
         }
 
-        /* ─── FOTO ─── */
+        /* FOTO */
         function setFoto(val) {
             temFoto = val;
             document.getElementById('btn-foto-sim').className = 'yn-btn' + (val ? ' active-yes' : '');
             document.getElementById('btn-foto-nao').className = 'yn-btn' + (!val ? ' active-no' : '');
             show('section-foto', val);
-        }
-        function handleFotoFile(input) {
-            const file = input.files[0];
-            if (!file) return;
-            const preview = document.getElementById('photo-preview');
-            const placeholder = document.getElementById('photo-placeholder');
-            const reader = new FileReader();
-            reader.onload = e => {
-                preview.src = e.target.result;
-                preview.style.display = 'block';
-                placeholder.style.display = 'none';
-                document.getElementById('photo-drop').classList.add('has-file');
-            };
-            reader.readAsDataURL(file);
+            if (!val) { fotoBase64 = null; fotoMime = null; fotoNome = null; }
         }
 
-        /* ─── EXP ─── */
+        /* EXP */
         function setExp(val) {
             temExp = val;
             document.getElementById('btn-exp-sim').className = 'yn-btn' + (val ? ' active-yes' : '');
@@ -2035,141 +1911,91 @@
             show('section-exp', val);
             if (val && expCount === 0) addExp();
         }
-
         function addExp() {
             expCount++;
             const id = expCount;
             const div = document.createElement('div');
             div.className = 'exp-block'; div.id = 'exp-' + id;
             div.innerHTML = `
-        <div class="exp-block-title">
-          Experiência #${id}
-          ${id > 1 ? `<button class="btn-remove" onclick="removeBlock('exp-${id}')" type="button"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Remover</button>` : ''}
-        </div>
-        <div class="row">
-          <div class="field">
-            <label>Nome da empresa <span class="req">*</span></label>
-            <input type="text" id="exp-empresa-${id}" placeholder="Ex: Magazine Luiza" />
+      <div class="exp-block-title">Experiência #${id}
+        ${id > 1 ? `<button class="btn-remove" onclick="removeBlock('exp-${id}')" type="button"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Remover</button>` : ''}
+      </div>
+      <div class="row">
+        <div class="field"><label>Nome da empresa <span class="req">*</span></label><input type="text" id="exp-empresa-${id}" placeholder="Ex: Magazine Luiza"/></div>
+        <div class="field"><label>Cargo <span class="req">*</span></label><input type="text" id="exp-cargo-${id}" placeholder="Ex: Vendedor Sênior"/></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Início (mês/ano) <span class="req">*</span></label><input type="month" id="exp-inicio-${id}"/></div>
+        <div class="field"><label>Saída (mês/ano)</label><input type="month" id="exp-saida-${id}"/></div>
+      </div>
+      <div class="check-row" style="margin-bottom:12px;">
+        <input type="checkbox" id="exp-atual-${id}" onchange="toggleAtual(${id})">
+        <label for="exp-atual-${id}">Trabalho aqui atualmente</label>
+      </div>
+      <div class="field">
+        <label>Responsabilidades e conquistas <span class="req">*</span></label>
+        <div class="field-hint" style="margin-bottom:8px;">Use verbos de ação. Ex: "Aumentei as vendas em 25%..."</div>
+        <div class="resp-list" id="resp-list-${id}">
+          <div class="resp-item">
+            <input type="text" placeholder="Ex: Gerenciei equipe de 10 vendedores atingindo 120% da meta">
+            <button class="btn-resp-remove" onclick="removeResp(this)" type="button"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
           </div>
-          <div class="field">
-            <label>Cargo <span class="req">*</span></label>
-            <input type="text" id="exp-cargo-${id}" placeholder="Ex: Vendedor Sênior" />
-          </div>
         </div>
-        <div class="row">
-          <div class="field">
-            <label>Início (mês/ano) <span class="req">*</span></label>
-            <input type="month" id="exp-inicio-${id}" />
-          </div>
-          <div class="field" id="exp-saida-wrap-${id}">
-            <label>Saída (mês/ano)</label>
-            <input type="month" id="exp-saida-${id}" />
-          </div>
-        </div>
-        <div class="check-row" style="margin-bottom:12px;">
-          <input type="checkbox" id="exp-atual-${id}" onchange="toggleAtual(${id})">
-          <label for="exp-atual-${id}">Trabalho aqui atualmente</label>
-        </div>
-        <div class="field">
-          <label>Responsabilidades e conquistas <span class="req">*</span></label>
-          <div class="field-hint" style="margin-bottom:8px;">Use verbos de ação. Ex: "Aumentei as vendas em 25% ao implementar..."</div>
-          <div class="resp-list" id="resp-list-${id}">
-            <div class="resp-item">
-              <input type="text" placeholder="Ex: Gerenciei equipe de 10 vendedores atingindo 120% da meta mensal">
-              <button class="btn-resp-remove" onclick="removeResp(this)" type="button"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-            </div>
-          </div>
-          <button class="btn-add-resp" onclick="addResp(${id})" type="button">
-            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            Adicionar responsabilidade
-          </button>
-        </div>
-      `;
+        <button class="btn-add-resp" onclick="addResp(${id})" type="button">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Adicionar responsabilidade
+        </button>
+      </div>`;
             document.getElementById('exp-blocks').appendChild(div);
         }
-
         function toggleAtual(id) {
             const checked = document.getElementById('exp-atual-' + id).checked;
             const saida = document.getElementById('exp-saida-' + id);
-            saida.disabled = checked;
-            saida.value = checked ? '' : saida.value;
-            saida.style.opacity = checked ? '.4' : '1';
+            saida.disabled = checked; saida.value = checked ? '' : saida.value; saida.style.opacity = checked ? '.4' : '1';
         }
-
         function addResp(id) {
             const list = document.getElementById('resp-list-' + id);
             const item = document.createElement('div'); item.className = 'resp-item';
-            item.innerHTML = `<input type="text" placeholder="Ex: Reduzi custos operacionais em 15% através de..."><button class="btn-resp-remove" onclick="removeResp(this)" type="button"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
-            list.appendChild(item);
-            item.querySelector('input').focus();
+            item.innerHTML = `<input type="text" placeholder="Ex: Reduzi custos em 15%..."><button class="btn-resp-remove" onclick="removeResp(this)" type="button"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
+            list.appendChild(item); item.querySelector('input').focus();
         }
-        function removeResp(btn) {
-            const item = btn.closest('.resp-item');
-            const list = item.parentElement;
-            if (list.children.length > 1) item.remove();
-        }
+        function removeResp(btn) { const item = btn.closest('.resp-item'); if (item.parentElement.children.length > 1) item.remove(); }
 
-        /* ─── CURSOS ─── */
+        /* CURSOS */
         function addCurso() {
             cursoCount++;
             const id = cursoCount;
-            const div = document.createElement('div');
-            div.className = 'exp-block'; div.id = 'curso-' + id;
+            const div = document.createElement('div'); div.className = 'exp-block'; div.id = 'curso-' + id;
             div.innerHTML = `
-        <div class="exp-block-title">
-          Curso #${id}
-          <button class="btn-remove" onclick="removeBlock('curso-${id}')" type="button"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Remover</button>
-        </div>
-        <div class="field">
-          <label>Nome do curso</label>
-          <input type="text" id="curso-nome-${id}" placeholder="Ex: Técnico em Segurança do Trabalho" />
-        </div>
-        <div class="row">
-          <div class="field">
-            <label>Conclusão ou situação</label>
-            <input type="text" id="curso-data-${id}" placeholder="Ex: 2023 ou Em andamento" />
-          </div>
-          <div class="field">
-            <label>Nível</label>
-            <select id="curso-nivel-${id}">
-              <option value="">Selecione</option>
-              <option>Livre / Extensão</option>
-              <option>Técnico</option>
-              <option>Tecnólogo</option>
-              <option>Graduação</option>
-              <option>Pós-Graduação / MBA</option>
-              <option>Mestrado</option>
-              <option>Doutorado</option>
-            </select>
-          </div>
-        </div>
-      `;
+      <div class="exp-block-title">Curso #${id}
+        <button class="btn-remove" onclick="removeBlock('curso-${id}')" type="button"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Remover</button>
+      </div>
+      <div class="field"><label>Nome do curso</label><input type="text" id="curso-nome-${id}" placeholder="Ex: Técnico em Segurança do Trabalho"/></div>
+      <div class="row">
+        <div class="field"><label>Conclusão ou situação</label><input type="text" id="curso-data-${id}" placeholder="Ex: 2023 ou Em andamento"/></div>
+        <div class="field"><label>Nível</label><select id="curso-nivel-${id}"><option value="">Selecione</option><option>Livre / Extensão</option><option>Técnico</option><option>Tecnólogo</option><option>Graduação</option><option>Pós-Graduação / MBA</option><option>Mestrado</option><option>Doutorado</option></select></div>
+      </div>`;
             document.getElementById('cursos-blocks').appendChild(div);
         }
 
-        /* ─── IDIOMAS ─── */
+        /* IDIOMAS */
         function addLang() {
             langCount++;
             const id = langCount;
-            const div = document.createElement('div');
-            div.className = 'lang-block'; div.id = 'lang-' + id;
+            const div = document.createElement('div'); div.className = 'lang-block'; div.id = 'lang-' + id;
             div.innerHTML = `
-        <div class="field"><label>Idioma</label><input type="text" id="lang-nome-${id}" placeholder="Ex: Inglês" /></div>
-        <div class="field"><label>Nível</label><select id="lang-nivel-${id}"><option value="">Nível</option><option>Básico</option><option>Intermediário</option><option>Avançado</option><option>Fluente</option><option>Nativo</option></select></div>
-        <button class="btn-lang-remove" onclick="removeBlock('lang-${id}')" type="button"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-      `;
+      <div class="field"><label>Idioma</label><input type="text" id="lang-nome-${id}" placeholder="Ex: Inglês"/></div>
+      <div class="field"><label>Nível</label><select id="lang-nivel-${id}"><option value="">Nível</option><option>Básico</option><option>Intermediário</option><option>Avançado</option><option>Fluente</option><option>Nativo</option></select></div>
+      <button class="btn-lang-remove" onclick="removeBlock('lang-${id}')" type="button"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
             document.getElementById('lang-blocks').appendChild(div);
         }
 
-        /* ─── HELPERS ─── */
+        /* HELPERS */
         function show(id, val) { document.getElementById(id).classList.toggle('show', val); }
         function showErr(id, val) { document.getElementById(id).style.display = val ? 'flex' : 'none'; }
         function markInvalid(id, val) { const el = document.getElementById(id); if (el) el.classList.toggle('invalid', val); }
         function removeBlock(id) { document.getElementById(id)?.remove(); }
-        function showToast(msg) {
-            const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
-            setTimeout(() => t.classList.remove('show'), 3500);
-        }
+        function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3500); }
         function setLoading(on) {
             document.getElementById('btnSubmit').disabled = on;
             document.getElementById('btnIcon').style.display = on ? 'none' : 'block';
@@ -2177,34 +2003,20 @@
             document.getElementById('btnText').textContent = on ? 'Enviando...' : (temCV ? 'Enviar Currículo' : 'Enviar Dados para Criação');
         }
 
-        /* ─── FILE ─── */
-        function handleCVFile(input) {
-            const file = input.files[0];
-            if (!file) return;
-            const name = document.getElementById('cv-file-name');
-            name.textContent = file.name;
-            document.getElementById('cv-drop').classList.add('has-file');
-            showErr('err-cv-file', false);
-        }
-
-        /* ─── SUBMIT ─── */
+        /* SUBMIT */
         async function handleSubmit() {
             if (temCV === null) { showErr('err-tem-cv', true); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
-
             let ok = true;
 
             if (temCV) {
-                // VALIDAÇÃO UPLOAD
-                const file = document.getElementById('cv-file').files[0];
-                if (!file) { showErr('err-cv-file', true); ok = false; }
-                const cvNome = document.getElementById('cv-nome').value.trim();
-                if (!cvNome) { showErr('err-cv-nome', true); markInvalid('cv-nome', true); ok = false; } else { showErr('err-cv-nome', false); markInvalid('cv-nome', false); }
-                const cvTel = document.getElementById('cv-tel').value.trim();
-                if (cvTel.length < 10) { showErr('err-cv-tel', true); markInvalid('cv-tel', true); ok = false; } else { showErr('err-cv-tel', false); markInvalid('cv-tel', false); }
-                const cvEmail = document.getElementById('cv-email').value.trim();
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cvEmail)) { showErr('err-cv-email', true); markInvalid('cv-email', true); ok = false; } else { showErr('err-cv-email', false); markInvalid('cv-email', false); }
+                if (!cvBase64) { showErr('err-cv-file', true); ok = false; }
+                const n = document.getElementById('cv-nome').value.trim();
+                if (!n) { showErr('err-cv-nome', true); markInvalid('cv-nome', true); ok = false; } else { showErr('err-cv-nome', false); markInvalid('cv-nome', false); }
+                const t = document.getElementById('cv-tel').value.trim();
+                if (t.length < 10) { showErr('err-cv-tel', true); markInvalid('cv-tel', true); ok = false; } else { showErr('err-cv-tel', false); markInvalid('cv-tel', false); }
+                const em = document.getElementById('cv-email').value.trim();
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { showErr('err-cv-email', true); markInvalid('cv-email', true); ok = false; } else { showErr('err-cv-email', false); markInvalid('cv-email', false); }
             } else {
-                // VALIDAÇÃO CRIAR
                 const nome = document.getElementById('nome').value.trim();
                 if (nome.length < 3) { showErr('err-nome', true); markInvalid('nome', true); ok = false; } else { showErr('err-nome', false); markInvalid('nome', false); }
                 const cidade = document.getElementById('cidade').value.trim();
@@ -2215,21 +2027,19 @@
                 if (tel.length < 10) { showErr('err-telefone', true); markInvalid('telefone', true); ok = false; } else { showErr('err-telefone', false); markInvalid('telefone', false); }
                 const email = document.getElementById('email').value.trim();
                 if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('err-email', true); markInvalid('email', true); ok = false; } else { showErr('err-email', false); markInvalid('email', false); }
-                const objetivo = document.getElementById('objetivo').value.trim();
-                if (!objetivo) { showErr('err-objetivo', true); markInvalid('objetivo', true); ok = false; } else { showErr('err-objetivo', false); markInvalid('objetivo', false); }
-                const escolaridade = document.getElementById('escolaridade').value;
-                if (!escolaridade) { showErr('err-escolaridade', true); markInvalid('escolaridade', true); ok = false; } else { showErr('err-escolaridade', false); markInvalid('escolaridade', false); }
+                const obj = document.getElementById('objetivo').value.trim();
+                if (!obj) { showErr('err-objetivo', true); markInvalid('objetivo', true); ok = false; } else { showErr('err-objetivo', false); markInvalid('objetivo', false); }
+                const esc = document.getElementById('escolaridade').value;
+                if (!esc) { showErr('err-escolaridade', true); markInvalid('escolaridade', true); ok = false; } else { showErr('err-escolaridade', false); markInvalid('escolaridade', false); }
                 if (temExp === null) { showErr('err-exp-yn', true); ok = false; } else { showErr('err-exp-yn', false); }
                 if (selectedHard.size === 0) { showErr('err-hard-skills', true); ok = false; } else { showErr('err-hard-skills', false); }
                 if (selectedSoft.size === 0) { showErr('err-soft-skills', true); ok = false; } else { showErr('err-soft-skills', false); }
             }
 
-            if (!ok) { showToast('⚠️ Preencha todos os campos obrigatórios.'); return; }
-
+            if (!ok) { showToast('Preencha todos os campos obrigatórios.'); return; }
             setLoading(true);
-            const proto = 'CV-' + Date.now().toString().slice(-8).toUpperCase();
 
-            // Montar payload
+            const proto = 'CV-' + Date.now().toString().slice(-8).toUpperCase();
             let payload = { protocolo: proto, tipo: temCV ? 'Envio de currículo existente' : 'Criação de currículo' };
 
             if (temCV) {
@@ -2237,7 +2047,7 @@
                 payload.telefone = document.getElementById('cv-tel').value.trim();
                 payload.email = document.getElementById('cv-email').value.trim();
                 payload.observacoes = document.getElementById('cv-obs').value.trim() || '—';
-                payload.arquivo = document.getElementById('cv-file').files[0]?.name || '—';
+                if (cvBase64) { payload.cvBase64 = cvBase64; payload.cvMime = cvMime; payload.cvNome = cvNome; }
             } else {
                 payload.nome = document.getElementById('nome').value.trim();
                 payload.idade = document.getElementById('idade').value || '—';
@@ -2257,12 +2067,13 @@
                 payload.certificacoes = document.getElementById('certificacoes').value.trim() || '—';
                 payload.projetos = document.getElementById('projetos').value.trim() || '—';
                 payload.experiencia = temExp ? 'Sim' : 'Não (primeiro emprego)';
+                if (fotoBase64) { payload.fotoBase64 = fotoBase64; payload.fotoMime = fotoMime; payload.fotoNome = fotoNome; }
             }
 
             try {
                 await fetch(SCRIPT_URL, {
-                    method: 'POST', mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
                     body: JSON.stringify(payload)
                 });
                 document.getElementById('protocolNum').textContent = 'Protocolo: ' + proto;
@@ -2270,16 +2081,18 @@
                 document.getElementById('successPage').style.display = 'block';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } catch (e) {
-                showToast('⚠️ Erro ao enviar. Verifique sua conexão.');
+                showToast('Erro ao enviar. Verifique sua conexão.');
             } finally {
                 setLoading(false);
             }
         }
 
-        /* ─── RESET ─── */
+        /* RESET */
         function resetForm() {
             temCV = null; temFoto = null; temExp = null;
             expCount = 0; cursoCount = 0; langCount = 0;
+            fotoBase64 = null; fotoMime = null; fotoNome = null;
+            cvBase64 = null; cvMime = null; cvNome = null;
             selectedHard.clear(); selectedSoft.clear();
             document.querySelectorAll('.skill-item').forEach(i => { i.classList.remove('selected'); i.querySelector('input[type="checkbox"]').checked = false; });
             document.querySelectorAll('.skills-selected-tags').forEach(t => t.innerHTML = '');
@@ -2289,7 +2102,7 @@
             document.getElementById('cursos-blocks').innerHTML = '';
             document.getElementById('lang-blocks').innerHTML = '';
             document.getElementById('submit-area').style.display = 'none';
-            document.querySelectorAll('input:not([type=checkbox]):not([type=file]), textarea, select').forEach(el => { el.value = ''; el.classList.remove('invalid'); });
+            document.querySelectorAll('input:not([type=checkbox]):not([type=file]),textarea,select').forEach(el => { el.value = ''; el.classList.remove('invalid'); });
             document.querySelectorAll('.err').forEach(e => e.style.display = 'none');
             document.getElementById('cv-file-name').textContent = '';
             document.getElementById('cv-drop').classList.remove('has-file');
