@@ -1411,6 +1411,45 @@
                             placeholder="Ex: Quero focar em vagas de TI, preciso de layout mais moderno..."></textarea>
                         <div class="field-hint">Opcional — nos ajuda a entregar o que você precisa</div>
                     </div>
+
+                    <div class="divider"></div>
+
+                    <!-- FOTO NO UPLOAD -->
+                    <div class="field">
+                        <div class="yn-label" style="margin-bottom:8px;">Deseja incluir foto 3x4 no currículo?</div>
+                        <div class="yn-wrap" style="max-width:320px;">
+                            <button class="yn-btn" id="btn-cv-foto-sim" onclick="setCVFoto(true)" type="button">Sim,
+                                incluir foto</button>
+                            <button class="yn-btn" id="btn-cv-foto-nao" onclick="setCVFoto(false)"
+                                type="button">Não</button>
+                        </div>
+                        <div class="collapsible" id="section-cv-foto" style="margin-top:1rem;">
+                            <div class="info-box" style="margin-bottom:1rem;">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="12" y1="16" x2="12" y2="12" />
+                                    <line x1="12" y1="8" x2="12.01" y2="8" />
+                                </svg>
+                                <p>Envie a foto no formato JPG ou PNG, tamanho 3x4. Máx. 3MB.</p>
+                            </div>
+                            <div class="photo-drop" id="cv-photo-drop"
+                                onclick="document.getElementById('cv-foto-file').click()">
+                                <input type="file" id="cv-foto-file" accept="image/jpeg,image/png"
+                                    onchange="handleCVFotoFile(this)">
+                                <img id="cv-photo-preview" class="photo-preview" src="" alt="Foto" />
+                                <div class="photo-placeholder" id="cv-photo-placeholder">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                        <circle cx="12" cy="7" r="4" />
+                                    </svg>
+                                </div>
+                                <div class="photo-drop-title">Clique para selecionar a foto<br><span
+                                        style="color:var(--text-hint);font-weight:400;">JPG ou PNG · Máx. 3MB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -1829,10 +1868,11 @@
     <script>
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxwL6VY9sDd0-cHZ3Asw3P9L53muA8rAZzZPc7EDoY3x61bnoIFPE8HMKSqt71fks4WQw/exec';
 
-        let temCV = null, temFoto = null, temExp = null;
+        let temCV = null, temFoto = null, temExp = null, temCVFoto = null;
         let expCount = 0, cursoCount = 0, langCount = 0;
         let fotoBase64 = null, fotoMime = null, fotoNome = null;
         let cvBase64 = null, cvMime = null, cvNome = null;
+        let cvFotoBase64 = null, cvFotoMime = null, cvFotoNome = null;
         const selectedHard = new Set(), selectedSoft = new Set();
 
         const hardSkills = ['Excel Avançado', 'Word', 'PowerPoint', 'Google Sheets', 'Google Docs', 'Pacote Office', 'SAP', 'ERP', 'CRM', 'Salesforce', 'HubSpot', 'Photoshop', 'Illustrator', 'Canva', 'AutoCAD', 'Inventor', 'Python', 'JavaScript', 'Java', 'SQL', 'PHP', 'HTML/CSS', 'React', 'Node.js', 'Power BI', 'Tableau', 'Google Analytics', 'SEO', 'Google Ads', 'Facebook Ads', 'Marketing Digital', 'Contabilidade', 'Gestão Financeira', 'Fluxo de Caixa', 'Gestão de Projetos', 'Scrum', 'Agile', 'Trello', 'Jira', 'Notion', 'NF-e', 'TOTVS', 'Protheus', 'Notas Fiscais', 'Legislação Trabalhista', 'Manutenção Elétrica', 'Manutenção Mecânica', 'CNC', 'PLC', 'Direção Veicular', 'Empilhadeira', 'NR-35', 'NR-10', 'NR-12', 'Enfermagem', 'Cuidados com Idosos', 'Primeiros Socorros', 'Corte e Costura', 'Design de Moda', 'Atendimento ao Cliente'];
@@ -1862,6 +1902,27 @@
 
         function handleFotoFile(input) { const file = input.files[0]; if (!file) return; if (file.size > 3 * 1024 * 1024) { showToast('A foto excede 3MB. Escolha uma imagem menor.'); input.value = ''; return; } const reader = new FileReader(); reader.onload = e => { fotoBase64 = e.target.result.split(',')[1]; fotoMime = file.type; fotoNome = file.name; document.getElementById('photo-preview').src = e.target.result; document.getElementById('photo-preview').style.display = 'block'; document.getElementById('photo-placeholder').style.display = 'none'; document.getElementById('photo-drop').classList.add('has-file'); }; reader.readAsDataURL(file); }
         function handleCVFile(input) { const file = input.files[0]; if (!file) return; if (file.size > 10 * 1024 * 1024) { showToast('O arquivo excede 10MB.'); input.value = ''; return; } const reader = new FileReader(); reader.onload = e => { cvBase64 = e.target.result.split(',')[1]; cvMime = file.type; cvNome = file.name; document.getElementById('cv-file-name').textContent = file.name; document.getElementById('cv-drop').classList.add('has-file'); showErr('err-cv-file', false); }; reader.readAsDataURL(file); }
+
+        function setCVFoto(val) {
+            temCVFoto = val;
+            document.getElementById('btn-cv-foto-sim').className = 'yn-btn' + (val ? ' active-yes' : '');
+            document.getElementById('btn-cv-foto-nao').className = 'yn-btn' + (!val ? ' active-no' : '');
+            show('section-cv-foto', val);
+            if (!val) { cvFotoBase64 = null; cvFotoMime = null; cvFotoNome = null; }
+        }
+        function handleCVFotoFile(input) {
+            const file = input.files[0]; if (!file) return;
+            if (file.size > 3 * 1024 * 1024) { showToast('A foto excede 3MB. Escolha uma imagem menor.'); input.value = ''; return; }
+            const reader = new FileReader();
+            reader.onload = e => {
+                cvFotoBase64 = e.target.result.split(',')[1]; cvFotoMime = file.type; cvFotoNome = file.name;
+                document.getElementById('cv-photo-preview').src = e.target.result;
+                document.getElementById('cv-photo-preview').style.display = 'block';
+                document.getElementById('cv-photo-placeholder').style.display = 'none';
+                document.getElementById('cv-photo-drop').classList.add('has-file');
+            };
+            reader.readAsDataURL(file);
+        }
 
         function setTemCV(val) { temCV = val; document.getElementById('btn-tem-cv-sim').className = 'yn-btn' + (val ? ' active-yes' : ''); document.getElementById('btn-tem-cv-nao').className = 'yn-btn' + (!val ? ' active-no' : ''); showErr('err-tem-cv', false); show('section-upload-cv', val); show('section-criar-cv', !val); document.getElementById('submit-area').style.display = 'block'; document.getElementById('btnText').textContent = val ? 'Enviar Currículo' : 'Enviar Dados para Criação'; }
         function setFoto(val) { temFoto = val; document.getElementById('btn-foto-sim').className = 'yn-btn' + (val ? ' active-yes' : ''); document.getElementById('btn-foto-nao').className = 'yn-btn' + (!val ? ' active-no' : ''); show('section-foto', val); if (!val) { fotoBase64 = null; fotoMime = null; fotoNome = null; } }
@@ -1928,7 +1989,7 @@
             setLoading(true);
             const proto = 'CV-' + Date.now().toString().slice(-8).toUpperCase();
             let payload = { protocolo: proto, tipo: temCV ? 'Envio de currículo existente' : 'Criação de currículo' };
-            if (temCV) { payload.nome = document.getElementById('cv-nome').value.trim(); payload.telefone = document.getElementById('cv-tel').value.trim(); payload.email = document.getElementById('cv-email').value.trim(); payload.observacoes = document.getElementById('cv-obs').value.trim() || '—'; if (cvBase64) { payload.cvBase64 = cvBase64; payload.cvMime = cvMime; payload.cvNome = cvNome; } }
+            if (temCV) { payload.nome = document.getElementById('cv-nome').value.trim(); payload.telefone = document.getElementById('cv-tel').value.trim(); payload.email = document.getElementById('cv-email').value.trim(); payload.observacoes = document.getElementById('cv-obs').value.trim() || '—'; if (cvBase64) { payload.cvBase64 = cvBase64; payload.cvMime = cvMime; payload.cvNome = cvNome; } if (cvFotoBase64) { payload.fotoBase64 = cvFotoBase64; payload.fotoMime = cvFotoMime; payload.fotoNome = cvFotoNome; } }
             else { payload.nome = document.getElementById('nome').value.trim(); payload.idade = document.getElementById('idade').value || '—'; payload.cidade = document.getElementById('cidade').value.trim(); payload.estado = document.getElementById('estado').value; payload.telefone = document.getElementById('telefone').value.trim(); payload.email = document.getElementById('email').value.trim(); payload.linkedin = document.getElementById('linkedin').value.trim() || '—'; payload.pretensao = document.getElementById('salario').value.trim() || '—'; payload.objetivo = document.getElementById('objetivo').value.trim(); payload.escolaridade = document.getElementById('escolaridade').value; payload.curso_grad = document.getElementById('curso-grad').value.trim() || '—'; payload.instituicao = document.getElementById('instituicao').value.trim() || '—'; payload.ano_conclusao = document.getElementById('ano-conclusao').value.trim() || '—'; payload.hard_skills = [...selectedHard].join(', '); payload.soft_skills = [...selectedSoft].join(', '); payload.certificacoes = document.getElementById('certificacoes').value.trim() || '—'; payload.projetos = document.getElementById('projetos').value.trim() || '—'; payload.experiencia = temExp ? 'Sim' : 'Não (primeiro emprego)'; if (fotoBase64) { payload.fotoBase64 = fotoBase64; payload.fotoMime = fotoMime; payload.fotoNome = fotoNome; } }
             try { await fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(payload) }); document.getElementById('protocolNum').textContent = 'Protocolo: ' + proto; document.getElementById('formPage').style.display = 'none'; document.getElementById('successPage').style.display = 'block'; window.scrollTo({ top: 0, behavior: 'smooth' }); }
             catch (e) { showToast('Erro ao enviar. Verifique sua conexão.'); }
@@ -1936,8 +1997,9 @@
         }
 
         function resetForm() {
-            temCV = null; temFoto = null; temExp = null; expCount = 0; cursoCount = 0; langCount = 0;
+            temCV = null; temFoto = null; temExp = null; temCVFoto = null; expCount = 0; cursoCount = 0; langCount = 0;
             fotoBase64 = null; fotoMime = null; fotoNome = null; cvBase64 = null; cvMime = null; cvNome = null;
+            cvFotoBase64 = null; cvFotoMime = null; cvFotoNome = null;
             selectedHard.clear(); selectedSoft.clear();
             document.querySelectorAll('.skill-item').forEach(i => { i.classList.remove('selected'); i.querySelector('input[type="checkbox"]').checked = false; });
             document.querySelectorAll('.skills-selected-tags').forEach(t => t.innerHTML = '');
@@ -1954,6 +2016,9 @@
             document.getElementById('photo-preview').style.display = 'none';
             document.getElementById('photo-placeholder').style.display = 'flex';
             document.getElementById('photo-drop').classList.remove('has-file');
+            document.getElementById('cv-photo-preview').style.display = 'none';
+            document.getElementById('cv-photo-placeholder').style.display = 'flex';
+            document.getElementById('cv-photo-drop').classList.remove('has-file');
             document.getElementById('formPage').style.display = 'block';
             document.getElementById('successPage').style.display = 'none';
             window.scrollTo({ top: 0, behavior: 'smooth' });
