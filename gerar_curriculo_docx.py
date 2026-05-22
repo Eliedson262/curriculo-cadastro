@@ -24,6 +24,14 @@ def set_run_font(run, name='Arial', size=11, bold=False, color='000000'):
     run.font.size = Pt(size)
     run.bold = bold
     run.font.color.rgb = RGBColor.from_string(color)
+    rPr = run._element.get_or_add_rPr()
+    rFonts = rPr.rFonts
+    if rFonts is None:
+        rFonts = OxmlElement('w:rFonts')
+        rPr.append(rFonts)
+    rFonts.set(qn('w:ascii'), name)
+    rFonts.set(qn('w:hAnsi'), name)
+    rFonts.set(qn('w:cs'), name)
 
 
 def add_section_title(doc, text):
@@ -35,8 +43,7 @@ def add_section_title(doc, text):
 
 
 def add_bullet(doc, text):
-    p = doc.add_paragraph(style=None)
-    p.style = doc.styles['Normal']
+    p = doc.add_paragraph()
     p.paragraph_format.left_indent = Cm(0.5)
     p.paragraph_format.first_line_indent = Cm(-0.25)
     r = p.add_run('• ' + text)
@@ -53,10 +60,6 @@ def format_docx(data, output_path='curriculo_formatado.docx'):
         section.bottom_margin = Cm(2.0)
         section.left_margin = Cm(3.0)
         section.right_margin = Cm(2.0)
-
-    normal = doc.styles['Normal']
-    normal.font.name = 'Arial'
-    normal.font.size = Pt(11)
 
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
