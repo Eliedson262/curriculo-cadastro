@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Currículo - {{ c.nome }}</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1.5cm;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 10pt;
+            color: #333;
+            background: white;
+        }
+
+        .container {
+            max-width: 18cm;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 3px solid #2A6DD9;
+            padding-bottom: 12px;
+            margin-bottom: 14px;
+        }
+
+        .nome {
+            font-size: 20pt;
+            font-weight: bold;
+            color: #0D1B2E;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .contato {
+            font-size: 9pt;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .foto {
+            width: 90px;
+            height: 110px;
+            object-fit: cover;
+            border: 2px solid #2A6DD9;
+            border-radius: 4px;
+        }
+
+        .secao {
+            margin-bottom: 12px;
+        }
+
+        .titulo-secao {
+            font-size: 9pt;
+            font-weight: bold;
+            color: #2A6DD9;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid #C5D8EF;
+            padding-bottom: 3px;
+            margin-bottom: 7px;
+        }
+
+        .texto {
+            font-size: 9.5pt;
+            line-height: 1.6;
+            text-align: justify;
+            white-space: pre-wrap;
+        }
+
+        .skills-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill {
+            background: #EBF2FA;
+            color: #2A6DD9;
+            border: 1px solid #C5D8EF;
+            border-radius: 3px;
+            padding: 2px 8px;
+            font-size: 8.5pt;
+            font-weight: 600;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .info-item {
+            font-size: 9pt;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #555;
+            font-size: 8pt;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- CABEÇALHO -->
+        <div class="header">
+            <div>
+                <div class="nome">{{ c.nome or '' }}</div>
+                <div class="contato">
+                    {% if c.email %}📧 {{ c.email }}<br>{% endif %}
+                    {% if c.telefone %}📱 {{ c.telefone }}<br>{% endif %}
+                    {% if c.cidade %}📍 {{ c.cidade }}{% if c.estado %} — {{ c.estado }}{% endif %}{% endif %}
+                    {% if c.linkedin and c.linkedin != '—' %}<br>🔗 {{ c.linkedin }}{% endif %}
+                </div>
+            </div>
+            {% if c.foto_base64 %}
+            <img src="data:{{ c.foto_mime or 'image/jpeg' }};base64,{{ c.foto_base64 }}" class="foto" alt="Foto">
+            {% endif %}
+        </div>
+
+        <!-- OBJETIVO -->
+        {% if c.objetivo %}
+        <div class="secao">
+            <div class="titulo-secao">Objetivo Profissional</div>
+            <div class="texto">{{ c.objetivo }}</div>
+        </div>
+        {% endif %}
+
+        <!-- INFORMAÇÕES -->
+        <div class="secao">
+            <div class="titulo-secao">Informações</div>
+            <div class="grid2">
+                {% if c.idade and c.idade != '—' %}<div class="info-item"><span class="info-label">Idade:</span> {{
+                    c.idade }} anos</div>{% endif %}
+                {% if c.escolaridade %}<div class="info-item"><span class="info-label">Escolaridade:</span> {{
+                    c.escolaridade }}</div>{% endif %}
+                {% if c.pretensao and c.pretensao != '—' %}<div class="info-item"><span class="info-label">Pretensão
+                        Salarial:</span> {{ c.pretensao }}</div>{% endif %}
+                {% if c.estado %}<div class="info-item"><span class="info-label">Localização:</span> {{ c.cidade }}/{{
+                    c.estado }}</div>{% endif %}
+            </div>
+        </div>
+
+        <!-- FORMAÇÃO -->
+        {% if c.curso_grad and c.curso_grad != '—' %}
+        <div class="secao">
+            <div class="titulo-secao">Formação Acadêmica</div>
+            <div class="texto">
+                <strong>{{ c.curso_grad }}</strong><br>
+                {% if c.instituicao and c.instituicao != '—' %}{{ c.instituicao }}{% endif %}
+                {% if c.ano_conclusao and c.ano_conclusao != '—' %} — Conclusão: {{ c.ano_conclusao }}{% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- EXPERIÊNCIA -->
+        {% if c.experiencia and c.experiencia == 'Sim' %}
+        <div class="secao">
+            <div class="titulo-secao">Experiência Profissional</div>
+            <div class="texto">Possui experiência profissional.</div>
+        </div>
+        {% endif %}
+
+        <!-- HARD SKILLS -->
+        {% if c.hard_skills %}
+        <div class="secao">
+            <div class="titulo-secao">Habilidades Técnicas</div>
+            <div class="skills-wrap">
+                {% for s in c.hard_skills.split(',') %}
+                {% if s.strip() %}<span class="skill">{{ s.strip() }}</span>{% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- SOFT SKILLS -->
+        {% if c.soft_skills %}
+        <div class="secao">
+            <div class="titulo-secao">Habilidades Comportamentais</div>
+            <div class="skills-wrap">
+                {% for s in c.soft_skills.split(',') %}
+                {% if s.strip() %}<span class="skill">{{ s.strip() }}</span>{% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- CERTIFICAÇÕES -->
+        {% if c.certificacoes and c.certificacoes != '—' %}
+        <div class="secao">
+            <div class="titulo-secao">Cursos e Certificações</div>
+            <div class="texto">{{ c.certificacoes }}</div>
+        </div>
+        {% endif %}
+
+        <!-- PROJETOS -->
+        {% if c.projetos and c.projetos != '—' %}
+        <div class="secao">
+            <div class="titulo-secao">Projetos</div>
+            <div class="texto">{{ c.projetos }}</div>
+        </div>
+        {% endif %}
+
+    </div>
+</body>
+
+</html>
