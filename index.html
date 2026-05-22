@@ -1265,6 +1265,145 @@
             color: var(--blue);
             font-weight: 700;
         }
+
+        /* ── TEMPLATE PAGE ── */
+        #templatePage {
+            display: none;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 1.75rem 1.25rem 0;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 1.5rem 0;
+        }
+
+        @media(max-width:560px) {
+            .template-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .template-card {
+            border: 2px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all .2s;
+            background: var(--surface);
+            text-align: center;
+        }
+
+        .template-card:hover {
+            border-color: var(--blue);
+            background: var(--blue-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .template-card.selected {
+            border-color: var(--blue);
+            background: var(--blue-light);
+        }
+
+        .template-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .template-card h3 {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .template-card p {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .template-actions {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 1.25rem;
+        }
+
+        .btn-preview {
+            width: 100%;
+            padding: 13px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--blue);
+            background: transparent;
+            border: 1.5px solid var(--blue);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all .15s;
+        }
+
+        .btn-preview:hover {
+            background: var(--blue-light);
+        }
+
+        .btn-pagar {
+            width: 100%;
+            padding: 14px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: #fff;
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all .2s;
+            box-shadow: 0 6px 20px rgba(42, 109, 217, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-pagar::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+        }
+
+        .btn-pagar:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 28px rgba(42, 109, 217, 0.45);
+        }
+
+        .btn-pagar span,
+        .btn-pagar svg {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-pagar svg {
+            width: 17px;
+            height: 17px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
     </style>
 </head>
 
@@ -1820,6 +1959,66 @@
         </div>
     </div>
 
+
+    <!-- TEMPLATE PAGE -->
+    <div id="templatePage">
+        <div class="body-wrap" style="padding-top:2rem;">
+            <div class="success-card" style="text-align:left; padding:2rem;">
+
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:1.5rem;">
+                    <div class="success-icon-wrap" style="width:50px;height:50px;flex-shrink:0;margin:0;">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#16A34A" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 style="font-size:18px;font-weight:800;color:var(--text);margin-bottom:3px;">Dados salvos com
+                            sucesso!</h2>
+                        <p style="font-size:12.5px;color:var(--text-muted);line-height:1.5;">Agora escolha o modelo do
+                            seu currículo para continuar.</p>
+                    </div>
+                </div>
+
+                <div class="section-label">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                    </svg>
+                    Escolha o modelo
+                </div>
+
+                <div class="template-grid">
+                    <div class="template-card" id="card-curto" onclick="selecionarTemplate('curto')">
+                        <div class="template-card-icon">📄</div>
+                        <h3>Currículo Curto</h3>
+                        <p>1 página · Compacto e objetivo<br>Ideal para quem tem menos experiência ou quer algo direto
+                            ao ponto</p>
+                    </div>
+                    <div class="template-card" id="card-longo" onclick="selecionarTemplate('longo')">
+                        <div class="template-card-icon">📑</div>
+                        <h3>Currículo Completo</h3>
+                        <p>2+ páginas · Detalhado e completo<br>Ideal para perfis com mais experiência e informações</p>
+                    </div>
+                </div>
+
+                <div class="template-actions" id="template-actions">
+                    <button class="btn-preview" onclick="abrirPreview()">
+                        👁️ Visualizar currículo
+                    </button>
+                    <button class="btn-pagar" onclick="irParaPagamento()">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                            <line x1="1" y1="10" x2="23" y2="10" />
+                        </svg>
+                        <span>Pagar e Baixar — R$ 19,90</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <!-- SUCCESS -->
     <div id="successPage">
         <div class="body-wrap" style="padding-top:2rem;">
@@ -1991,10 +2190,61 @@
             let payload = { protocolo: proto, tipo: temCV ? 'Envio de currículo existente' : 'Criação de currículo' };
             if (temCV) { payload.nome = document.getElementById('cv-nome').value.trim(); payload.telefone = document.getElementById('cv-tel').value.trim(); payload.email = document.getElementById('cv-email').value.trim(); payload.observacoes = document.getElementById('cv-obs').value.trim() || '—'; if (cvBase64) { payload.cvBase64 = cvBase64; payload.cvMime = cvMime; payload.cvNome = cvNome; } if (cvFotoBase64) { payload.fotoBase64 = cvFotoBase64; payload.fotoMime = cvFotoMime; payload.fotoNome = cvFotoNome; } }
             else { payload.nome = document.getElementById('nome').value.trim(); payload.idade = document.getElementById('idade').value || '—'; payload.cidade = document.getElementById('cidade').value.trim(); payload.estado = document.getElementById('estado').value; payload.telefone = document.getElementById('telefone').value.trim(); payload.email = document.getElementById('email').value.trim(); payload.linkedin = document.getElementById('linkedin').value.trim() || '—'; payload.pretensao = document.getElementById('salario').value.trim() || '—'; payload.objetivo = document.getElementById('objetivo').value.trim(); payload.escolaridade = document.getElementById('escolaridade').value; payload.curso_grad = document.getElementById('curso-grad').value.trim() || '—'; payload.instituicao = document.getElementById('instituicao').value.trim() || '—'; payload.ano_conclusao = document.getElementById('ano-conclusao').value.trim() || '—'; payload.hard_skills = [...selectedHard].join(', '); payload.soft_skills = [...selectedSoft].join(', '); payload.certificacoes = document.getElementById('certificacoes').value.trim() || '—'; payload.projetos = document.getElementById('projetos').value.trim() || '—'; payload.experiencia = temExp ? 'Sim' : 'Não (primeiro emprego)'; if (fotoBase64) { payload.fotoBase64 = fotoBase64; payload.fotoMime = fotoMime; payload.fotoNome = fotoNome; } }
-            try { await fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(payload) }); document.getElementById('protocolNum').textContent = 'Protocolo: ' + proto; document.getElementById('formPage').style.display = 'none'; document.getElementById('successPage').style.display = 'block'; window.scrollTo({ top: 0, behavior: 'smooth' }); }
-            catch (e) { showToast('Erro ao enviar. Verifique sua conexão.'); }
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await response.json();
+                if (data.success) {
+                    window.usuarioId = data.usuario_id;
+                    window.protocolo = proto;
+                    document.getElementById('formPage').style.display = 'none';
+                    document.getElementById('templatePage').style.display = 'block';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    showToast('Erro ao salvar dados. Tente novamente.');
+                }
+            } catch (e) { showToast('Erro ao enviar. Verifique sua conexão.'); }
             finally { setLoading(false); }
         }
+
+
+        // ── TEMPLATE / PAGAMENTO ──────────────────────────────
+        function selecionarTemplate(tipo) {
+            window.templateSelecionado = tipo;
+            document.getElementById('card-curto').classList.toggle('selected', tipo === 'curto');
+            document.getElementById('card-longo').classList.toggle('selected', tipo === 'longo');
+            document.getElementById('template-actions').style.display = 'flex';
+        }
+
+        function abrirPreview() {
+            if (!window.usuarioId || !window.templateSelecionado) {
+                showToast('Escolha um modelo primeiro.');
+                return;
+            }
+            window.open('/preview/' + window.usuarioId + '?template=' + window.templateSelecionado, '_blank');
+        }
+
+        async function irParaPagamento() {
+            if (!window.templateSelecionado) { showToast('Escolha um modelo para continuar.'); return; }
+            try {
+                await fetch('/escolher-template/' + window.usuarioId, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ template: window.templateSelecionado })
+                });
+                const res = await fetch('/pagar/' + window.usuarioId, { method: 'POST' });
+                const data = await res.json();
+                if (data.url_pagamento) {
+                    window.location.href = data.url_pagamento;
+                } else {
+                    showToast('Erro ao iniciar pagamento.');
+                }
+            } catch (e) { showToast('Erro ao iniciar pagamento. Tente novamente.'); }
+        }
+        // ──────────────────────────────────────────────────────
 
         function resetForm() {
             temCV = null; temFoto = null; temExp = null; temCVFoto = null; expCount = 0; cursoCount = 0; langCount = 0;
@@ -2022,6 +2272,13 @@
             document.getElementById('formPage').style.display = 'block';
             document.getElementById('successPage').style.display = 'none';
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('templatePage').style.display = 'none';
+            window.usuarioId = null;
+            window.templateSelecionado = null;
+            document.getElementById('card-curto').classList.remove('selected');
+            document.getElementById('card-longo').classList.remove('selected');
+            document.getElementById('template-actions').style.display = 'none';
+
         }
     </script>
 </body>
